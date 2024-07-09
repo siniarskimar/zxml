@@ -4,14 +4,14 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const mod_zxml = b.addModule("zxml", .{
+    _ = b.addModule("zxml", .{
         .root_source_file = b.path("src/xml.zig"),
         .target = target,
         .optimize = optimize,
     });
 
     const test_zxml = b.addTest(.{
-        .root_source_file = mod_zxml.root_source_file.?,
+        .root_source_file = b.path("src/test.zig"),
         .target = target,
     });
 
